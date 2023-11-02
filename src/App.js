@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+
+import React, { useState } from "react";
+import ChatbotForm from "./components/ChatbotForm";
+import ChatWidgetBuilding from "./components/ChatWidgetBuilding";
 
 function App() {
+  const [step, setStep] = useState(1);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      {step === 1 && <ChatbotForm onNext={() => setStep(2)} />}
+      {step === 2 && <ChatWidgetBuilding onNext={() => setStep(3)} />}
+      {/* Add further steps as needed */}
+    </div>
+  );
+}
+
+function ChatWidgetCustomization({ onNext }) {
+  return (
+    <div>
+      <h2>Customize your chat widget</h2>
+      <form>
+        <input type="text" placeholder="Top bar message" />
+        <input type="text" placeholder="Welcome message" />
+        {/* Add other inputs */}
+        <button type="button" onClick={onNext}>
+          Next
+        </button>
+      </form>
     </div>
   );
 }
