@@ -1,7 +1,12 @@
 import React from "react";
 import "../App.css"; // assuming you place the CSS in a separate file
 
-function ChatbotForm() {
+function ChatbotForm({ onNext }) {
+  const handleSubmit = (event) => {
+    event.preventDefault(); // Prevent default form submission
+    onNext(); // Trigger the onNext function
+  };
+
   return (
     <div className="container">
       <div className="avatar">
@@ -11,7 +16,7 @@ function ChatbotForm() {
         </div>
       </div>
       <h2>Hello, let's start</h2>
-      <form id="user-details-form">
+      <form onSubmit={handleSubmit} id="user-details-form">
         <div className="input-group">
           <label htmlFor="full-name">Full name *</label>
           <input type="text" id="full-name" placeholder="Vivek Sharma" />

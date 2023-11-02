@@ -16,20 +16,4 @@ function App() {
   );
 }
 
-function ChatWidgetCustomization({ onNext }) {
-  return (
-    <div>
-      <h2>Customize your chat widget</h2>
-      <form>
-        <input type="text" placeholder="Top bar message" />
-        <input type="text" placeholder="Welcome message" />
-        {/* Add other inputs */}
-        <button type="button" onClick={onNext}>
-          Next
-        </button>
-      </form>
-    </div>
-  );
-}
-
 export default App;
